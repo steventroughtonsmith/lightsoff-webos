@@ -1,0 +1,634 @@
+/* Put Application specific CSS here. */
+
+
+.buttonOn {
+	position:fixed;
+	background : url(../images/lo-button-on.png) repeat;
+	height : 57px;
+	width : 63px;
+	padding: 8px;
+	margin: -8px;
+	margin-top: -10px;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 0.15s;
+	opacity: 0;
+	
+}
+
+.buttonOn:active {
+	position:fixed;
+	background : url(../images/lo-button-on-press.png) repeat;
+	height : 57px;
+	width : 63px;
+	padding: 8px;
+	margin: -8px;
+	margin-top: -10px;
+	
+	
+}
+
+.buttonOff {
+	position:fixed;
+	background : url(../images/lo-button-off.png) repeat;
+	height : 57px;
+	width : 63px;
+	
+	
+}
+
+.buttonOff:active {
+	position:fixed;
+	background : url(../images/lo-button-press.png) repeat;
+	height : 57px;
+	width : 63px;
+}
+
+
+/*
+ .buttonOn:hover {
+ position:fixed;
+ background : url(images/lo-button-on-press.png) repeat;
+ height : 57px;
+ width : 63px;
+ }
+ 
+ .buttonOff:hover {
+ position:fixed;
+ background : url(images/lo-button-off-press.png) repeat;
+ height : 57px;
+ width : 63px;
+ }
+ */
+
+/* Pixi/Veer */
+@media screen and (device-aspect-ratio: 320/480) { 
+	
+	.bg
+	{
+		position:fixed;
+		top: 0px;
+		bottom:0px;
+		overflow: visible;
+		
+		width: 320px;
+		height: 480px;
+		background: url(../images/lo-background.png) fixed;
+		
+	}
+	
+	.lcd
+	{
+		position:fixed;
+		top: 402px;
+		left: 20px;
+		width: 170px;
+		height: 66px;
+		background: url(../images/lo-background-lcd.png);
+		
+		
+	}
+	
+	.lcdoverlay
+	{
+		position:fixed;
+		top: 402px;
+		left: 20px;
+		width: 168px;
+		height: 63px;
+		background: url(../images/digitalreadout-overlay.png);
+		z-index:10;
+		
+	}
+	
+	.lcdlevelselectoverlay
+	{
+		position:fixed;
+		top: 402px;
+		left: 20px;
+		width: 168px;
+		height: 63px;
+		z-index:10;
+		background: url(../images/digitalreadout-overlay.png);
+		
+		visibility: hidden;
+		
+	}
+	
+	.lcdlevelselectbuttonleft
+	{
+		position:fixed;
+		top: 411px;
+		left: 52px;
+		width: 25px;
+		height: 25px;
+		background: url(../images/lcdpieces-leftarrow.png) no-repeat center;
+		z-index:10;
+		
+	}
+	
+	.lcdlevelselectbuttonright
+	{
+		position:fixed;
+		top: 411px;
+		left: 132px;
+		width: 25px;
+		height: 25px;
+		background: url(../images/lcdpieces-rightarrow.png) no-repeat center;
+		z-index:10;
+		
+	}
+	
+	
+	#lcdlevelselectcounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 410px;
+		left: 20px;
+		width: 168px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	
+	#lcdlevelcounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 410px;
+		left: 40px;
+		width: 50px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdmovescounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 410px;
+		left: 120px;
+		width: 50px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdtext
+	{
+		
+		position:fixed;
+		
+		line-height: 66px;
+		text-align: center;
+		
+		top: 420px;
+		left: 40px;
+		width: 50px;
+		height: 66px;
+		font-size: 11px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdmovestext
+	{
+		position:fixed;
+		
+		line-height: 66px;
+		text-align: center;
+		
+		font-size: 11px;
+		top: 420px;
+		left: 120px;
+		width: 50px;
+		height: 66px;
+		
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	.clear { /* generic container (i.e. div) for floating buttons */
+		overflow: hidden;
+		width: 100%;
+	}
+	
+	.button {
+		background: transparent url('../images/reset.png') no-repeat scroll top right;
+		position: absolute;
+		top: 420px;
+		right: 25px;
+		width: 83px;
+		height: 31px;
+		
+	}
+	
+	.button:active {
+		background: transparent url('../images/reset_pressed.png') no-repeat scroll top right;
+		position: absolute;
+		top: 420px;
+		right: 25px;
+		width: 83px;
+		height: 31px;
+		
+	}
+}
+
+
+
+
+
+/* Pre */
+
+@media screen and (device-aspect-ratio: 320/400) { 
+	
+	.bg
+	{
+		position:fixed;
+		bottom:0px;
+		overflow: visible;
+		top:-70px;
+		width: 320px;
+		height: 480px;
+		background: url(../images/lo-background.png);
+		
+		
+	}
+	
+	.lcd
+	{
+		position:fixed;
+		top: 328px;
+		left: 20px;
+		width: 170px;
+		height: 66px;
+		background: url(../images/lo-background-lcd.png);
+		
+		
+	}
+	
+	.lcdoverlay
+	{
+		position:fixed;
+		top: 328px;
+		left: 20px;
+		width: 168px;
+		height: 63px;
+		background: url(../images/digitalreadout-overlay.png);
+		z-index:10;
+		
+	}
+	
+	#lcdlevelcounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 332px;
+		left: 40px;
+		width: 50px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdmovescounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 332px;
+		left: 120px;
+		width: 50px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdtext
+	{
+		
+		position:fixed;
+		
+		line-height: 66px;
+		text-align: center;
+		
+		top: 328px;
+		left: 40px;
+		width: 50px;
+		height: 66px;
+		font-size: 11px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdmovestext
+	{
+		position:fixed;
+		
+		line-height: 66px;
+		text-align: center;
+		
+		font-size: 11px;
+		top: 326px;
+		left: 120px;
+		width: 50px;
+		height: 66px;
+		
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	.clear { /* generic container (i.e. div) for floating buttons */
+		overflow: hidden;
+		width: 100%;
+	}
+	
+	.button:active {
+		background: transparent url('../images/reset_pressed.png') no-repeat scroll top right;
+		position: absolute;
+		top: 336px;
+		right: 25px;
+		width: 83px;
+		height: 31px;
+		
+	}
+	.button {
+		background: transparent url('../images/reset.png') no-repeat scroll top right;
+		position: absolute;
+		top: 336px;
+		right: 25px;
+		width: 83px;
+		height: 31px;
+		
+	}
+	
+	
+   	.lcdlevelselectoverlay
+	{
+		position:fixed;
+		top: 328px;
+		left: 20px;
+		width: 168px;
+		height: 63px;
+		z-index:10;
+		background: url(../images/digitalreadout-overlay.png);
+		
+		visibility: hidden;
+		
+	}
+	
+	.lcdlevelselectbuttonleft
+	{
+		position:fixed;
+		top: 337px;
+		left: 52px;
+		width: 25px;
+		height: 25px;
+		background: url(../images/lcdpieces-leftarrow.png) no-repeat center;
+		z-index:10;
+		
+	}
+	
+	.lcdlevelselectbuttonright
+	{
+		position:fixed;
+		top: 337px;
+		left: 132px;
+		width: 25px;
+		height: 25px;
+		background: url(../images/lcdpieces-rightarrow.png) no-repeat center;
+		z-index:10;
+		
+	}
+	
+	
+	#lcdlevelselectcounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 336px;
+		left: 20px;
+		width: 168px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+}
+
+
+
+
+
+
+
+
+@media screen and (device-aspect-ratio: 480/800) { 
+	
+	
+	.bg
+	{
+		position:fixed;
+		top: 0px;
+		bottom:0px;
+		overflow: visible;
+		
+		width: 320px;
+		height: 480px;
+		background: url(../images/lo-background.png) fixed;
+		
+	}
+	
+	.lcd
+	{
+		position:fixed;
+		top: 402px;
+		left: 20px;
+		width: 170px;
+		height: 66px;
+		background: url(../images/lo-background-lcd.png);
+		
+		
+	}
+	
+	.lcdoverlay
+	{
+		position:fixed;
+		top: 402px;
+		left: 20px;
+		width: 168px;
+		height: 63px;
+		background: url(../images/digitalreadout-overlay.png);
+		z-index:10;
+		
+	}
+	
+	.lcdlevelselectoverlay
+	{
+		position:fixed;
+		top: 402px;
+		left: 20px;
+		width: 168px;
+		height: 63px;
+		z-index:10;
+		background: url(../images/digitalreadout-overlay.png);
+		
+		visibility: hidden;
+		
+	}
+	
+	.lcdlevelselectbuttonleft
+	{
+		position:fixed;
+		top: 411px;
+		left: 52px;
+		width: 25px;
+		height: 25px;
+		background: url(../images/lcdpieces-leftarrow.png) no-repeat center;
+		z-index:10;
+		
+	}
+	
+	.lcdlevelselectbuttonright
+	{
+		position:fixed;
+		top: 411px;
+		left: 132px;
+		width: 25px;
+		height: 25px;
+		background: url(../images/lcdpieces-rightarrow.png) no-repeat center;
+		z-index:10;
+		
+	}
+	
+	
+	#lcdlevelselectcounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 410px;
+		left: 20px;
+		width: 168px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	
+	#lcdlevelcounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 410px;
+		left: 40px;
+		width: 50px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdmovescounttext
+	
+	{
+		position:fixed;
+		
+		text-align: center;
+		top: 410px;
+		left: 120px;
+		width: 50px;
+		height: 66px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdtext
+	{
+		
+		position:fixed;
+		
+		line-height: 66px;
+		text-align: center;
+		
+		top: 420px;
+		left: 40px;
+		width: 50px;
+		height: 66px;
+		font-size: 11px;
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	#lcdmovestext
+	{
+		position:fixed;
+		
+		line-height: 66px;
+		text-align: center;
+		
+		font-size: 11px;
+		top: 420px;
+		left: 120px;
+		width: 50px;
+		height: 66px;
+		
+		text-shadow: 0px 1px 2px rgb(16, 33, 75);
+		color: rgb(141, 175, 253);
+		
+	}
+	
+	.clear { /* generic container (i.e. div) for floating buttons */
+		overflow: hidden;
+		width: 100%;
+	}
+	
+	.button {
+		background: transparent url('../images/reset.png') no-repeat scroll top right;
+		position: absolute;
+		top: 420px;
+		right: 25px;
+		width: 83px;
+		height: 31px;
+		
+	}
+	
+	.button:active {
+		background: transparent url('../images/reset_pressed.png') no-repeat scroll top right;
+		position: absolute;
+		top: 420px;
+		right: 25px;
+		width: 83px;
+		height: 31px;
+		
+	}
+}

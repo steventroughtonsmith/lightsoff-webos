@@ -1,0 +1,19 @@
+LIGHTS OFF FOR WEBOS
+=============
+
+
+[![](https://lh4.googleusercontent.com/-RCgQzHvFn_Y/T7NdYMjgkvI/AAAAAAAAAxM/B7lqCoUCbgo/s512/screenshot_palm.png)](https://lh4.googleusercontent.com/-RCgQzHvFn_Y/T7NdYMjgkvI/AAAAAAAAAxM/B7lqCoUCbgo/s512/screenshot_palm.png)
+
+
+WHAT IS THIS?
+=============
+
+This is pretty much the latest code for the shipping version of Lights Off on webOS as of May 2012. It was built (very quickly) in 2009 when I first got a Pre, put on sale, made no money, and then Palm collapsed. I love webOS, but as of the current situation I don't gain much from keeping the game closed-source, so have at it!
+
+It supports the Prē, Pixi and Veer devices, excluding the Prē³. It's more HTML/JS than a Mojo app, and I never updated it for the Prē³, though such should be trivial.
+
+
+LICENSE
+=============
+
+You can use this for whatever you want, BSD-like. Lights Off is still available as a paid app on the Palm App Catalog (if you fancy supporting me), and I reserve the right to produce future versions of the game that aren't open-source for webOS devices, if there's a magical webOS resurgence of some kind. The artwork here, however, is copyright Adam Betts (http://www.artofadambetts.com/), so cannot be used in reproductions of this app.

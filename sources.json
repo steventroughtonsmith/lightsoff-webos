@@ -1,0 +1,6 @@
+[
+	{ "source": "/usr/palm/frameworks/media/media.js"},
+
+    {"source": "app\/assistants\/stage-assistant.js"},
+    {"source": "app\/assistants\/game-assistant.js"}
+]

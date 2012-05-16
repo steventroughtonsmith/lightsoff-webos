@@ -1,0 +1,10 @@
+{
+	"id": "com.steventroughtonsmith.lightsoff",
+	"version": "1.0.5",
+	"vendor": "High Caffeine Content",
+	"type": "web",
+	"main": "index.html",
+	"title": "Lights Off",
+	"icon": "icon.png",
+	"splashBackground":"images/lo-splash.png"
+}

@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>Lights Off</title>
+		<script src="/usr/palm/frameworks/mojo/mojo.js" type="text/javascript" x-mojo-version="1"></script>
+		<script src="/usr/palm/frameworks/media/Audio.js" type="text/javascript" x-mojo-version="1"></script>
+		<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no" />
+		<!-- application stylesheet should come in after the one loaded by the framework -->
+		<link href="stylesheets/lightsoff.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type="text/javascript">
+			
+			
+			var n = 0;
+			var levelArray = new Array(1);
+			var currentLevel = 0;
+			var maxLevel = 211;
+			var movesMade = 0;
+			
+			levelArray[0] = "-x---xxx---x-x---xxx---x-";
+			levelArray[1] = "xx-xxx---x-----x---xxx-xx";
+			levelArray[2] = "--x----x--xx-xx--x----x--";
+			levelArray[3] = "x-----x-----x-----x-----x";
+			levelArray[4] = "xxxxxxxxxx-----xxxxxxxxxx";
+			levelArray[5] = "----------x-x-x----------";
+			levelArray[6] = "x-x-xxxxxxxx-xxxxxxxx-x-x";
+			levelArray[7] = "x--xx--x-x-x-x-x-x--xx--x";
+			levelArray[8] = "--xx--xxx--x-x--xxx--xx--";
+			levelArray[9] = "x-xxx-xx--x---x--xx-xxx-x";
+			levelArray[10] = "xxx-----x-xx-xx-x-----xxx";
+			levelArray[11] = "xxx-xxx----x-x----xxx-xxx";
+			levelArray[12] = "---xxxxxxxxx-xxxxxxxxx---";
+			levelArray[13] = "x-----xxx--x-x--xxx-----x";
+			levelArray[14] = "--------x-------x--------";
+			levelArray[15] = "x-x-x--xx-xx-xx-xx--x-x-x";
+			levelArray[16] = "--xx--x--x-x-x-x--x--xx--";
+			levelArray[17] = "x-x--xx--xx---xx--xx--x-x";
+			levelArray[18] = "xx-x-x--x-x---x-x--x-x-xx";
+			levelArray[19] = "x----x--x-x---x-x--x----x";
+			levelArray[20] = "x-xxx----xx---xx----xxx-x";
+			levelArray[21] = "---xx-x-xx-----xx-x-xx---";
+			levelArray[22] = "x-xxx--xx--x-x--xx--xxx-x";
+			levelArray[23] = "---x-xxxx--x-x--xxxx-x---";
+			levelArray[24] = "xxxxx--xx-------xx--xxxxx";
+			levelArray[25] = "xx---x-------------x---xx";
+			levelArray[26] = "xxxx---x-x-x-x-x-x---xxxx";
+			levelArray[27] = "xxxxxxx---xx-xx---xxxxxxx";
+			levelArray[28] = "x-xxxx----x---x----xxxx-x";
+			levelArray[29] = "x-xx-x-x---------x-x-xx-x";
+			levelArray[30] = "xx--xxxx--x---x--xxxx--xx";
+			levelArray[31] = "x-xx-x--xxxx-xxxx--x-xx-x";
+			levelArray[32] = "-xxx-x-x-x-----x-x-x-xxx-";
+			levelArray[33] = "xxxx--xxxx-x-x-xxxx--xxxx";
+			levelArray[34] = "x---x--x-x-----x-x--x---x";
+			levelArray[35] = "-xx--x-----x-x-----x--xx-";
+			levelArray[36] = "-----xx--xxx-xxx--xx-----";
+			levelArray[37] = "xx----xx--xx-xx--xx----xx";
+			levelArray[38] = "x---xxx-xx-----xx-xxx---x";
+			levelArray[39] = "-xxxx------x-x------xxxx-";
+			levelArray[40] = "-xx---xxx-x---x-xxx---xx-";
+			levelArray[41] = "xx-xx-x-----------x-xx-xx";
+			levelArray[42] = "-x---x--xx-x-x-xx--x---x-";
+			levelArray[43] = "xxxxx-xx---------xx-xxxxx";
+			levelArray[44] = "xx-x-xx-x--x-x--x-xx-x-xx";
+			levelArray[45] = "xx-xx--xxxxx-xxxxx--xx-xx";
+			levelArray[46] = "---xx-xx--xx-xx--xx-xx---";
+			levelArray[47] = "x-xxxx-x-xx---xx-x-xxxx-x";
+			levelArray[48] = "--x-xx---x-x-x-x---xx-x--";
+			levelArray[49] = "xxx-x--xx-x---x-xx--x-xxx";
+			levelArray[50] = "x----x-x-xx---xx-x-x----x";
+			levelArray[51] = "x----xx-x--x-x--x-xx----x";
+			levelArray[52] = "x---xxx--xxx-xxx--xxx---x";
+			levelArray[53] = "xx-xx-x-x-------x-x-xx-xx";
+			levelArray[54] = "x-xxx-x--xx---xx--x-xxx-x";
+			levelArray[55] = "-xxxxxx-xx-x-x-xx-xxxxxx-";
+			levelArray[56] = "x-xxx-x-xxx---xxx-x-xxx-x";
+			levelArray[57] = "xxx--x---xxx-xxx---x--xxx";
+			levelArray[58] = "xx--x-x-x-x---x-x-x-x--xx";
+			levelArray[59] = "-xxxxxxxx--x-x--xxxxxxxx-";
+			levelArray[60] = "---xx---xxxx-xxxx---xx---";
+			levelArray[61] = "-x---xx-xx-x-x-xx-xx---x-";
+			levelArray[62] = "--xx-x-xxxx---xxxx-x-xx--";
+			levelArray[63] = "--x-x--x-x-x-x-x-x--x-x--";
+			levelArray[64] = "xxxx-x---x-x-x-x---x-xxxx";
+			levelArray[65] = "--x-xx--xxx---xxx--xx-x--";
+			levelArray[66] = "-xx-x---x-------x---x-xx-";
+			levelArray[67] = "xxxx-xxx---x-x---xxx-xxxx";
+			levelArray[68] = "-----x--xx-----xx--x-----";
+			levelArray[69] = "xx-x---xx-x---x-xx---x-xx";
+			levelArray[70] = "xxx-xx-x-x-x-x-x-x-xx-xxx";
+			levelArray[71] = "-xxx-x-xxx-----xxx-x-xxx-";
+			levelArray[72] = "x-xx-x---x-----x---x-xx-x";
+			levelArray[73] = "xxxx--x-x-x---x-x-x--xxxx";
+			levelArray[74] = "--x--xxx-xxx-xxx-xxx--x--";
+			levelArray[75] = "x--x-xx---xx-xx---xx-x--x";
+			levelArray[76] = "x--xxx-xx-x---x-xx-xxx--x";
+			levelArray[77] = "xx-xxx--xx-----xx--xxx-xx";
+			levelArray[78] = "-x---xx--xx---xx--xx---x-";
+			levelArray[79] = "-xxx-xxx-xxx-xxx-xxx-xxx-";
+			levelArray[80] = "xx-----x--xx-xx--x-----xx";
+			levelArray[81] = "xxxx-x-x--x---x--x-x-xxxx";
+			levelArray[82] = "xx--x--xxx-x-x-xxx--x--xx";
+			levelArray[83] = "-x-xx-x--xx---xx--x-xx-x-";
+			levelArray[84] = "-xxx--x-xx-----xx-x--xxx-";
+			levelArray[85] = "-x-xxx--x-x---x-x--xxx-x-";
+			levelArray[86] = "--xx--x-xxx---xxx-x--xx--";
+			levelArray[87] = "xxx-x-x--x-x-x-x--x-x-xxx";
+			levelArray[88] = "x-xx-xxx---------xxx-xx-x";
+			levelArray[89] = "xx-x---x--x---x--x---x-xx";
+			levelArray[90] = "xxxx----x--x-x--x----xxxx";
+			levelArray[91] = "x-x-x-x--x-----x--x-x-x-x";
+			levelArray[92] = "---xxxxxxx-----xxxxxxx---";
+			levelArray[93] = "-x-xxxx-x-x---x-x-xxxx-x-";
+			levelArray[94] = "-x--xx-xxxxx-xxxxx-xx--x-";
+			levelArray[95] = "xx--xx---x-x-x-x---xx--xx";
+			levelArray[96] = "xx----x-xx-----xx-x----xx";
+			levelArray[97] = "x-xx-xx-xx-----xx-xx-xx-x";
+			levelArray[98] = "-x------x-x---x-x------x-";
+			levelArray[99] = "--xx-x-----x-x-----x-xx--";
+			levelArray[100] = "xx--x------x-x------x--xx";
+			levelArray[101] = "---x-x-xx--x-x--xx-x-x---";
+			levelArray[102] = "x-----x--xx---xx--x-----x";
+			levelArray[103] = "x----xxx-xx---xx-xxx----x";
+			levelArray[104] = "-x-x-x--xxxx-xxxx--x-x-x-";
+			levelArray[105] = "xxxxxx-xxxxx-xxxxx-xxxxxx";
+			levelArray[106] = "-x---x-xx-x---x-xx-x---x-";
+			levelArray[107] = "--xx-x--x--x-x--x--x-xx--";
+			levelArray[108] = "x---xxx--x-----x--xxx---x";
+			levelArray[109] = "------xxxxxx-xxxxxx------";
+			levelArray[110] = "x--xxxx-xxx---xxx-xxxx--x";
+			levelArray[111] = "-----xxx---------xxx-----";
+			levelArray[112] = "xx--xxx-xxx---xxx-xxx--xx";
+			levelArray[113] = "-xx-x--xxx-----xxx--x-xx-";
+			levelArray[114] = "-x-x-xxxx-xx-xx-xxxx-x-x-";
+			levelArray[115] = "xxxxxxxxxxxx-xxxxxxxxxxxx";
+			levelArray[116] = "xx---xxx-x-----x-xxx---xx";
+			levelArray[117] = "-xx-x--x-xxx-xxx-x--x-xx-";
+			levelArray[118] = "-----x-xx-------xx-x-----";
+			levelArray[119] = "x-x-xxx-x-------x-xxx-x-x";
+			levelArray[120] = "x--xxxx--x-x-x-x--xxxx--x";
+			levelArray[121] = "--xxxxxx---------xxxxxx--";
+			levelArray[122] = "---x--x-x--x-x--x-x--x---";
+			levelArray[123] = "xx----x--xxx-xxx--x----xx";
+			levelArray[124] = "x-xx-xxx--xx-xx--xxx-xx-x";
+			levelArray[125] = "-------xxx-----xxx-------";
+			levelArray[126] = "x-x--x-xx--x-x--xx-x--x-x";
+			levelArray[127] = "-x-x-x-xx-------xx-x-x-x-";
+			levelArray[128] = "xx--xx--xxx---xxx--xx--xx";
+			levelArray[129] = "-xx--xxxxxx---xxxxxx--xx-";
+			levelArray[130] = "--x--x--x-xx-xx-x--x--x--";
+			levelArray[131] = "x-xxxx-xxxx---xxxx-xxxx-x";
+			levelArray[132] = "-x--x--xx-xx-xx-xx--x--x-";
+			levelArray[133] = "--xx----xx-x-x-xx----xx--";
+			levelArray[134] = "x-x--x-x---x-x---x-x--x-x";
+			levelArray[135] = "------x-----------x------";
+			levelArray[136] = "-xxxx-xxxxx---xxxxx-xxxx-";
+			levelArray[137] = "xxxxx----xxx-xxx----xxxxx";
+			levelArray[138] = "--xx-x-x-x-x-x-x-x-x-xx--";
+			levelArray[139] = "x---x-x-x-xx-xx-x-x-x---x";
+			levelArray[140] = "---x-x-x--x---x--x-x-x---";
+			levelArray[141] = "---x-x-x---x-x---x-x-x---";
+			levelArray[142] = "x-xxx-xx---x-x---xx-xxx-x";
+			levelArray[143] = "-x--x-xx--xx-xx--xx-x--x-";
+			levelArray[144] = "x-x-----x-x---x-x-----x-x";
+			levelArray[145] = "--xx-x-xxx-x-x-xxx-x-xx--";
+			levelArray[146] = "-x-xx-xx---x-x---xx-xx-x-";
+			levelArray[147] = "x---xx-x--xx-xx--x-xx---x";
+			levelArray[148] = "--x--xx-x-------x-xx--x--";
+			levelArray[149] = "---x---x-x-x-x-x-x---x---";
+			levelArray[150] = "-x-x-----------------x-x-";
+			levelArray[151] = "x-x-x-xx---------xx-x-x-x";
+			levelArray[152] = "-x--x-x--x-----x--x-x--x-";
+			levelArray[153] = "x-x-xx--x-xx-xx-x--xx-x-x";
+			levelArray[154] = "-x-xxx-x-xx---xx-x-xxx-x-";
+			levelArray[155] = "xx----xx---------xx----xx";
+			levelArray[156] = "x--xx-xxxx-x-x-xxxx-xx--x";
+			levelArray[157] = "x---xxxx--xx-xx--xxxx---x";
+			levelArray[158] = "xx-xx-xxxxxx-xxxxxx-xx-xx";
+			levelArray[159] = "-x----xxxx-x-x-xxxx----x-";
+			levelArray[160] = "-xxx-xxxxx-----xxxxx-xxx-";
+			levelArray[161] = "--------x-xx-xx-x--------";
+			levelArray[162] = "x----x----x---x----x----x";
+			levelArray[163] = "-xxx--x--xxx-xxx--x--xxx-";
+			levelArray[164] = "xxx---x-x-------x-x---xxx";
+			levelArray[165] = "-xxx-----x-----x-----xxx-";
+			levelArray[166] = "x--xxxxx---x-x---xxxxx--x";
+			levelArray[167] = "xxx-xx-xxxx---xxxx-xx-xxx";
+			levelArray[168] = "------x---xx-xx---x------";
+			levelArray[169] = "---xx--xx-------xx--xx---";
+			levelArray[170] = "xxx-xxx-x--x-x--x-xxx-xxx";
+			levelArray[171] = "x--x--x-xx-----xx-x--x--x";
+			levelArray[172] = "----xxxx-x-x-x-x-xxxx----";
+			levelArray[173] = "x--xx-x-x-x---x-x-x-xx--x";
+			levelArray[174] = "xxx-x--x---x-x---x--x-xxx";
+			levelArray[175] = "xxxx---x-xx---xx-x---xxxx";
+			levelArray[176] = "xxx----xxx-----xxx----xxx";
+			levelArray[177] = "xxx-xx----x---x----xx-xxx";
+			levelArray[178] = "x-x-xx-xxxxx-xxxxx-xx-x-x";
+			levelArray[179] = "-x-xxx-----x-x-----xxx-x-";
+			levelArray[180] = "x---x---x-xx-xx-x---x---x";
+			levelArray[181] = "x--xx-xxxxx---xxxxx-xx--x";
+			levelArray[182] = "-x--xxxx-xxx-xxx-xxxx--x-";
+			levelArray[183] = "--xxx-x-----------x-xxx--";
+			levelArray[184] = "x-xx--xx-xxx-xxx-xx--xx-x";
+			levelArray[185] = "x--xx-xx-x-x-x-x-xx-xx--x";
+			levelArray[186] = "---x--x---x---x---x--x---";
+			levelArray[187] = "-x---xx-xxx---xxx-xx---x-";
+			levelArray[188] = "xx-x--x-xxx---xxx-x--x-xx";
+			levelArray[189] = "-x-x-xx-xxxx-xxxx-xx-x-x-";
+			levelArray[190] = "-xxxxxxxx-x---x-xxxxxxxx-";
+			levelArray[191] = "xxxxx--xx-xx-xx-xx--xxxxx";
+			levelArray[192] = "--x--xx---xx-xx---xx--x--";
+			levelArray[193] = "-x-x--xxxxxx-xxxxxx--x-x-";
+			levelArray[194] = "x--xxxx--xx---xx--xxxx--x";
+			levelArray[195] = "xxxx-xxx--x---x--xxx-xxxx";
+			levelArray[196] = "-xx-xx-xx-xx-xx-xx-xx-xx-";
+			levelArray[197] = "xxx--x-xx-xx-xx-xx-x--xxx";
+			levelArray[198] = "x-xxx---xxx---xxx---xxx-x";
+			levelArray[199] = "xx-x--xxx--x-x--xxx--x-xx";
+			levelArray[200] = "xxx-x---xx-x-x-xx---x-xxx";
+			levelArray[201] = "x-x-x--x---------x--x-x-x";
+			levelArray[202] = "-xx-xx---x-----x---xx-xx-";
+			levelArray[203] = "x-x-x-x--xxx-xxx--x-x-x-x";
+			levelArray[204] = "x--xx---x-x---x-x---xx--x";
+			levelArray[205] = "x-x-x-xxx-xx-xx-xxx-x-x-x";
+			levelArray[206] = "x--x-----x-----x-----x--x";
+			levelArray[207] = "--xxxx-xx-xx-xx-xx-xxxx--";
+			levelArray[208] = "x-x-xx-x-x-----x-x-xx-x-x";
+			levelArray[209] = "x--xx-----x---x-----xx--x";
+			levelArray[210] = "xxxxx--x--xx-xx--x--xxxxx";
+			levelArray[211] = "x--x-xx-x-------x-xx-x--x";
+			
+			var ROW_COUNT = 5;
+			var COLUMN_COUNT = 5;
+			
+			var acceptsTouches = false;
+			
+			var ydelta = 0;
+			if (document.documentElement.clientHeight > 400)
+			ydelta = 80;
+			else
+			ydelta = 8;
+			
+			for(i=0;i<ROW_COUNT;i++)
+			{
+				var xdelta = 3;
+				for (j=0;j<COLUMN_COUNT;j++)
+				{
+					document.write("<div onClick='javascript:buttonPressed("+n+")' id=\"button"+n+"\" class='buttonOff' style=\"left:"+xdelta+"px; top: "+ydelta+"px; \"></div><div onClick='javascript:buttonPressed("+n+")' id=\"buttonp"+n+"\" class='buttonOn' style=\"left:"+xdelta+"px; top: "+ydelta+"px; \"></div>") 
+					
+					xdelta+=63;
+					
+					n++;
+				}
+				
+				ydelta+=64;
+			}
+			
+			setTimeout(begin, 1000, 0);
+			
+			
+			function begin()
+			{
+				
+				for (i=0; i<  25; i++)
+				{
+					animateOffLight(i);
+				}
+				
+				if (currentLevel > 0)
+				currentLevel--;
+				
+				document.getElementById("lcdlevelcounttext").innerHTML=currentLevel+1;
+				document.getElementById("lcdlevelselectcounttext").innerHTML=currentLevel+1;
+				
+				
+				acceptsTouches = false;
+				var delay = _showLightFlourish();
+				
+				setTimeout(loadLevel, delay*1100, 0);
+			}
+			
+			function loadLevel()
+			{
+				movesMade = 0;
+				document.getElementById("lcdmovescounttext").innerHTML=movesMade;
+				
+				
+				document.getElementById("lcdlevelcounttext").innerHTML=currentLevel+1;
+				document.getElementById("lcdlevelselectcounttext").innerHTML=currentLevel+1;
+				
+				
+				for(i=0;i<25;i++)
+				{
+					if (levelArray[currentLevel][i] == "x")
+					document.getElementById("buttonp"+i).style.opacity = 1;
+				}
+				
+				
+				
+				if (currentLevel <= maxLevel)
+				currentLevel++;
+				else
+				currentLevel = 0;
+				
+				StageAssistant.prototype.updateMaxLevel();
+				
+				
+				acceptsTouches = true;
+				
+			}
+			
+			
+			function reloadLevel()
+			{
+				movesMade = 0;
+				document.getElementById("lcdmovescounttext").innerHTML=movesMade;
+				
+				
+				document.getElementById("lcdlevelcounttext").innerHTML=currentLevel+1;
+				document.getElementById("lcdlevelselectcounttext").innerHTML=currentLevel+1;
+				
+				for(i=0;i<25;i++)
+				{
+					
+					document.getElementById("buttonp"+i).style.opacity = 0;
+					
+				}
+				
+				for(i=0;i<25;i++)
+				{
+					if (levelArray[currentLevel][i] == "x")
+					document.getElementById("buttonp"+i).style.opacity = 1;
+					
+					
+				}
+			}
+			
+			function decrementLevel()
+			{
+				
+				if (currentLevel > 1)
+				{
+					currentLevel-=2;
+					
+					for(i=0;i<25;i++)
+					{
+						document.getElementById("buttonp"+i).style.opacity = 0;
+						
+						
+					}
+					loadLevel();
+				}
+				
+				toggleLevelSelect();
+			}
+			
+			function incrementLevel()
+			{
+				
+				if (currentLevel < highestLevel)
+				{
+					
+					for(i=0;i<25;i++)
+					{
+						document.getElementById("buttonp"+i).style.opacity = 0;
+						
+						
+					}
+					
+					loadLevel();
+				}
+				
+				toggleLevelSelect();
+			}
+			
+			function toggleLevelSelect()
+			{
+				if (document.getElementById("lcdlevelselectoverlay").style.visibility == 'hidden')
+				{
+					document.getElementById("lcdlevelselectoverlay").style.visibility = 'visible';
+					document.getElementById("lcdoverlay").style.visibility = 'hidden';
+					document.getElementById("lcdcontents").style.visibility = 'hidden';
+					
+					
+				}
+				else
+				{
+					document.getElementById("lcdlevelselectoverlay").style.visibility = 'hidden';
+					document.getElementById("lcdoverlay").style.visibility = 'visible';
+					document.getElementById("lcdcontents").style.visibility = 'visible';
+					
+					
+				}
+				
+			}
+			
+			function buttonPressed(number)
+			{	 	 
+				if (acceptsTouches == false)
+				return;
+				
+				
+				movesMade++;
+				document.getElementById("lcdmovescounttext").innerHTML=movesMade;
+				
+				var up = number-5;
+				var down = number+5;
+				var left = number-1;
+				var right = number+1;
+				
+				if (number-5 >= 0)
+				{
+					if (document.getElementById("button"+up).style.left == document.getElementById("button"+number).style.left)
+					toggleButton(up);
+				}
+				
+				if (number-1 >= 0)
+				{
+					if (document.getElementById("button"+left).style.top == document.getElementById("button"+number).style.top)
+					toggleButton(left);
+				}
+				
+				toggleButton(number);
+				
+				if (number+1 < 25)
+				{
+					if (document.getElementById("button"+right).style.top == document.getElementById("button"+number).style.top)
+					toggleButton(right);
+				}
+				
+				if (number+5 < 25)
+				{
+					if (document.getElementById("button"+down).style.left == document.getElementById("button"+number).style.left)
+					toggleButton(down); 
+				}
+				
+				
+				checkSolved();
+				
+			}
+			
+			function checkSolved()
+			{
+				var solved = 1;
+				for (i=0;i<25;i++)
+				{
+					if (document.getElementById("buttonp"+i).style.opacity == 1)
+					solved = 0;
+				}
+				
+				if (solved == 1)
+				{
+					var delay = _animateWinSequence();
+					acceptsTouches = false;
+					setTimeout(loadLevel, delay*1000, 0);
+				}
+			}
+			
+			function toggleButton(number)
+			{
+				if (document.getElementById("buttonp"+number).style.opacity == 1)
+				{
+					
+					
+					document.getElementById("buttonp"+number).style.opacity = 0;
+					
+					
+				}
+				else
+				{
+					document.getElementById("buttonp"+number).style.opacity = 1;
+					
+				}
+			}
+			
+			function _animateWinSequence()
+			{
+				var winLightSequence = new Array(27);
+				winLightSequence[0] = 1;
+				winLightSequence[1] = 6; 
+				winLightSequence[2] = 11; 
+				winLightSequence[3] = 16; 
+				winLightSequence[4] = 21; 
+				winLightSequence[5] = 22; 
+				winLightSequence[6] = 23; 
+				winLightSequence[7] = 24; 
+				winLightSequence[8] = 25; 
+				winLightSequence[9] = 20; 
+				winLightSequence[10] = 15; 
+				winLightSequence[11] = 10; 
+				winLightSequence[12] = 5; 
+				winLightSequence[13] = 4; 
+				winLightSequence[14] = 3; 
+				winLightSequence[15] = 2; 
+				winLightSequence[16] = 7; 
+				winLightSequence[17] = 12; 
+				winLightSequence[18] = 17; 
+				winLightSequence[19] = 18; 
+				winLightSequence[20] = 19; 
+				winLightSequence[21] = 14; 
+				winLightSequence[22] = 9; 
+				winLightSequence[23] = 8; 
+				winLightSequence[24] = 7; 
+				winLightSequence[25] = 12; 
+				winLightSequence[26] = 13;
+				
+				var winLightSequenceDelay;
+				winLightSequenceDelay = executeLightSequence(winLightSequence);
+				
+				return winLightSequenceDelay;
+			}
+			
+			function animateOnLight(index)
+			{
+				document.getElementById("buttonp"+index).style.opacity = 1;
+				
+				setTimeout(animateOffLight, 50, index);
+			}
+			
+			function animateOffLight(index)
+			{
+				document.getElementById("buttonp"+index).style.opacity = 0;
+				
+			}
+			
+			function executeLightSequence(lightSequence)
+			{
+				var count = 27;
+				var lightDelay = 0.05;
+				var currentDelay = 0.0;
+				var lightIndex = 0;
+				while (lightIndex < count) {
+					setTimeout(animateOnLight, currentDelay*1000, lightSequence[lightIndex++]-1);
+					currentDelay += lightDelay;
+				}
+				currentDelay += lightDelay;
+				
+				if (currentDelay)
+				return currentDelay;
+			}
+			
+			function _showLightFlourish()
+			{
+				
+				var lightDelay = 0.0;
+				var rowIndex, columnIndex;
+				
+				// up lit
+				for (rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++) {
+					for (columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++) {
+						
+						setTimeout(animateOnLight, lightDelay*1000, (rowIndex * ROW_COUNT) + (columnIndex + 1) -1);
+					}
+					lightDelay += 0.05;
+				}
+				
+				// up dark
+				for (rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++) {
+					for (columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++) {
+						setTimeout(animateOnLight, lightDelay*1000, (rowIndex * ROW_COUNT) + (columnIndex + 1)-1);
+						
+					}
+					lightDelay += 0.05;
+				}
+				
+				// left lit
+				for (columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++) {
+					for (rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++) {
+						setTimeout(animateOnLight, lightDelay*1000, (rowIndex * ROW_COUNT) + (columnIndex + 1)-1);
+						
+					}
+					lightDelay += 0.05;
+				}
+				
+				// left dark
+				for (columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++) {
+					for (rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++) {
+						setTimeout(animateOnLight, lightDelay*1000, (rowIndex * ROW_COUNT) + (columnIndex + 1)-1);
+						
+					}
+					lightDelay += 0.05;
+				}
+				
+				// one by one lit
+				var previousDelay = lightDelay;
+				for (columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++) {
+					for (rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++) {
+						setTimeout(animateOnLight, lightDelay*1000, (rowIndex * ROW_COUNT) + (columnIndex + 1)-1);
+						
+						lightDelay += 0.05;
+					}
+				}
+				lightDelay = previousDelay + 0.05;
+				for (columnIndex = 0; columnIndex < COLUMN_COUNT; columnIndex++) {
+					for (rowIndex = 0; rowIndex < ROW_COUNT; rowIndex++) {
+						setTimeout(animateOnLight, lightDelay*1000, (rowIndex * ROW_COUNT) + (columnIndex + 1)-1);
+						
+						lightDelay += 0.05;
+					}
+				}
+				
+				return lightDelay;
+			}
+			
+			</script>
+		
+		
+	</head>
+	<body>
+		
+		
+	</body>
+</html>
